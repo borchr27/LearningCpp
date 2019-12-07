@@ -33,23 +33,31 @@ int main(){
     chipsInPile = (rand() % MAX_CHIPS)+1;
     maxChipDraw = chipsInPile * MAX_TURN;
     cout << "This round will start with " << chipsInPile << " chips in the pile \n" << endl;
-    if (player1Turn){
-        cout << playerNames[0] << ", how many chips would you like?\n";
-    }
-    else{
-        cout << playerNames[1] << ", how many chips would you like?\n";
-    }
-
-    cout << "You can only take a max of " << maxChipDraw << " chips" << endl;
-    cin >> chipsTaken;
-
     
+    while (gameOver == false){
+        do{
+            if (player1Turn){
+                cout << playerNames[0] << ", how many chips would you like?\n";
+            }
+            else{
+                cout << playerNames[1] << ", how many chips would you like?\n";
+            }
+            cout << "You can only take a max of " << (static_cast<int>(MAX_TURN * chipsInPile)) << " chips" << endl;
+            cin >> chipsTaken;                
+        } while (chipsTaken > (static_cast<int>(MAX_TURN * chipsInPile)) && (chipsInPile > 1));
+
+        chipsInPile = chipsInPile - chipsTaken;
+        cout << "There are x " << chipsInPile << " left in the pile\n";
+        if (chipsInPile == 0){
+            gameOver == true;
+        }
+        else{
+            player1Turn = !player1Turn;
+        }
+    }
     //randChipsTaken = (rand() % maxChipDraw)+1;
     //cout << "Number Taken: " << randChipsTaken << endl;
- 
 
     return 0;
-
-
 
 }
