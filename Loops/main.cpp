@@ -8,6 +8,7 @@
  #include <cstdlib>
 using namespace std;
 
+/* Loop Example
 int main(){
 
     for (int h = 0; h < 24; h++){
@@ -18,5 +19,17 @@ int main(){
         }
     }
 }
+*/
 
+// Do While Loop Example
+int main(){
+    int userChoice = 0;
+    do{
+        cout << "Hello welcome to my menu\n";
+        cout << "Please choose one of the following options \n";
+        cout << "1. continue\n";
+        cout << "2. quit\n";
+        cin >> userChoice;
+    }while(userChoice == 1);
+}
 
