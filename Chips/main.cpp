@@ -35,21 +35,35 @@ int main(){
     cout << "This round will start with " << chipsInPile << " chips in the pile \n" << endl;
     
     while (gameOver == false){
-        do{
+        do
+        {
             if (player1Turn){
                 cout << playerNames[0] << ", how many chips would you like?\n";
             }
             else{
-                cout << playerNames[1] << ", how many chips would you like?\n";
+                cout << playerNames[1] << ", how many chips would you like?\n";                
             }
-            cout << "You can only take a max of " << (static_cast<int>(MAX_TURN * chipsInPile)) << " chips" << endl;
+            cout << "You can take up to " << (static_cast<int>(MAX_TURN * chipsInPile)) << endl;            
+            if (static_cast<int>(MAX_TURN * chipsInPile) == 0){
+                cout << "1\n" ;
+            }
+            else{
+                cout << static_cast<int>(MAX_TURN * chipsInPile) << endl;                
+            }            
             cin >> chipsTaken;                
         } while (chipsTaken > (static_cast<int>(MAX_TURN * chipsInPile)) && (chipsInPile > 1));
 
         chipsInPile = chipsInPile - chipsTaken;
-        cout << "There are x " << chipsInPile << " left in the pile\n";
+        cout << "There are " << chipsInPile << " left in the pile\n";
         if (chipsInPile == 0){
             gameOver == true;
+            if (player1Turn){
+                cout << playerNames[1] << ", congratulations you won\n";
+                break;
+            }
+            else{
+                cout <<  playerNames[0] << ", congratulations you won\n";
+            }
         }
         else{
             player1Turn = !player1Turn;
