@@ -11,7 +11,8 @@ using namespace std;
 
 const int MAX_CHIPS = 100;
 const float MAX_TURN = .5;
-int main(){
+int main()
+{
 
     bool player1Turn = true;
     bool gameOver = false;
@@ -32,9 +33,10 @@ int main(){
 
     chipsInPile = (rand() % MAX_CHIPS)+1;
     maxChipDraw = chipsInPile * MAX_TURN;
-    cout << "This round will start with " << chipsInPile << " chips in the pile \n" << endl;
+    cout << "This round will start with " << chipsInPile << " chips in the pile \n";
     
-    while (gameOver == false){
+    while (gameOver == false)
+    {
         do
         {
             if (player1Turn){
@@ -48,13 +50,13 @@ int main(){
                 cout << "1 chip\n" ;
             }
             else{
-                cout << static_cast<int>(MAX_TURN * chipsInPile) << " chips" << endl;                
+                cout << static_cast<int>(MAX_TURN * chipsInPile) << " chip(s)" << endl;                
             }            
             cin >> chipsTaken;                
         } while (chipsTaken > (static_cast<int>(MAX_TURN * chipsInPile)) && (chipsInPile > 1));
 
         chipsInPile = chipsInPile - chipsTaken;
-        cout << "There are " << chipsInPile << " left in the pile\n";
+        cout << "There are " << chipsInPile << " chip(s) left in the pile\n";
         if (chipsInPile == 0){
             gameOver == true;
             if (player1Turn){
@@ -70,9 +72,5 @@ int main(){
             player1Turn = !player1Turn;
         }
     }
-    //randChipsTaken = (rand() % maxChipDraw)+1;
-    //cout << "Number Taken: " << randChipsTaken << endl;
-
     return 0;
-
 }
