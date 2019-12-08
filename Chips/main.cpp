@@ -43,12 +43,12 @@ int main(){
             else{
                 cout << playerNames[1] << ", how many chips would you like?\n";                
             }
-            cout << "You can take up to " << (static_cast<int>(MAX_TURN * chipsInPile)) << endl;            
+            cout << "You can take up to: ";            
             if (static_cast<int>(MAX_TURN * chipsInPile) == 0){
-                cout << "1\n" ;
+                cout << "1 chip\n" ;
             }
             else{
-                cout << static_cast<int>(MAX_TURN * chipsInPile) << endl;                
+                cout << static_cast<int>(MAX_TURN * chipsInPile) << " chips" << endl;                
             }            
             cin >> chipsTaken;                
         } while (chipsTaken > (static_cast<int>(MAX_TURN * chipsInPile)) && (chipsInPile > 1));
@@ -63,6 +63,7 @@ int main(){
             }
             else{
                 cout <<  playerNames[0] << ", congratulations you won\n";
+                break;
             }
         }
         else{
