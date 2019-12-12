@@ -34,11 +34,12 @@ int main()
             cout << "Would you like to play again, type 1 for yes or 0 for no?\n";
             cin >> playAgain;
             if (playAgain == 1){
-                gameOver == false;
+                gameOver = false;
             }
             else if (playAgain == 0){
                 //dont want to play again
-                gameOver == true;
+                gameOver = true;
+                cout << "THANKS FOR PLAYING\n";
                 break;
             }
             else{
@@ -79,14 +80,14 @@ int main()
             chipsInPile = chipsInPile - chipsTaken;
             cout << "There are " << chipsInPile << " chip(s) left in the pile\n";
             if (chipsInPile == 0){
-                gameOver == true;
+                gameOver = true;
                 if (player1Turn){
                     cout << playerNames[1] << ", congratulations you won\n";
-                    return gameOver;
+                    //return gameOver;
                 }
                 else{
                     cout <<  playerNames[0] << ", congratulations you won\n";
-                    return gameOver;
+                    //return gameOver;
                 }
             }
             else{
