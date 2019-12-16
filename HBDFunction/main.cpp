@@ -9,7 +9,7 @@ using namespace std;
 
 // function prototypes
 void printHBD();
-void printHBD(string, int&);
+int printHBD(string);
 
 int main(){
     int myAge;
@@ -17,12 +17,10 @@ int main(){
     printHBD();
     printHBD();
     cout << "Happy Birthday dear user\n";
+    cout << printHBD("Sarah") << endl;
+    
+    myAge = printHBD("MB");
 
-    cout << "\nEnter your age \n";
-    cin >> myAge;
-    cout << "1. My age is: " << myAge << endl;
-    printHBD("Sarah", myAge);
-    cout << "2. My age is: " << myAge << endl;
 }
 
 // function header
@@ -30,7 +28,11 @@ void printHBD(){
     cout << "Happy Birthday to you\n";
 }
 
-void printHBD(string name, int& age){
+//this is not a void function any longer bc we are retunrning an integer
+int printHBD(string name){
+    int age;
     cout << "Happy Birthday to " << name << endl;
-    age = age + 10;
+    cout << "Enter your age \n";
+    cin >> age;
+    return age;
 }
