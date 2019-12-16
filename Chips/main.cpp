@@ -20,7 +20,7 @@ int main()
     int chipsTaken = 0;
     int maxChipDraw = 0;
     int randChipsTaken = 0;
-    int playAgain = 0;
+    char playAgain = '0';
 
     //allows player to enter names for player one and player two
     string playerNames[2];
@@ -31,32 +31,33 @@ int main()
 
     do{
         if (gameOver == true){
-            cout << "Would you like to play again, type 1 for yes or 0 for no?\n";
+            cout << "Would you like to play again? Type y for yes or n for no.\n";
             cin >> playAgain;
-            if (playAgain == 1){
+            if (playAgain == 'y'){
                 gameOver = false;
             }
-            else if (playAgain == 0){
+            else if (playAgain == 'n'){
                 //dont want to play again
                 gameOver = true;
                 cout << "THANKS FOR PLAYING\n";
                 break;
             }
             else{
-                cout << "Please type a 1 or a 0";
+                cout << "Please type y/n \n";
+                gameOver = true;
             }
 
         }
         else{
             gameOver == false;
             }
-
+        
         //seed the rand num generator
         srand(time(0));
         chipsInPile = (rand() % MAX_CHIPS)+1;
         maxChipDraw = chipsInPile * MAX_TURN;
         cout << "This round will start with " << chipsInPile << " chips in the pile \n";
-        
+
         while (gameOver == false)
         {
             do
