@@ -7,19 +7,30 @@
 
 using namespace std;
 
+// function prototypes
 void printHBD();
-void printHBD(string);
+void printHBD(string, int&);
+
 int main(){
+    int myAge;
+    // calling functions
     printHBD();
     printHBD();
     cout << "Happy Birthday dear user\n";
-    printHBD("Sarah!");
+
+    cout << "\nEnter your age \n";
+    cin >> myAge;
+    cout << "1. My age is: " << myAge << endl;
+    printHBD("Sarah", myAge);
+    cout << "2. My age is: " << myAge << endl;
 }
 
+// function header
 void printHBD(){
     cout << "Happy Birthday to you\n";
 }
 
-void printHBD(string name){
-    cout << "Happy Birthday to " << name;
+void printHBD(string name, int& age){
+    cout << "Happy Birthday to " << name << endl;
+    age = age + 10;
 }
