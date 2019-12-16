@@ -11,10 +11,6 @@ using namespace std;
 
 const int MAX_CHIPS = 100;
 const float MAX_TURN = .5;
-
-string FindPlayerName(string names[], bool playerTurn);
-
-
 int main()
 {
 
@@ -35,7 +31,7 @@ int main()
 
     do{
         if (gameOver == true){
-            cout << "Would you like to play again? Type (Y/N)\n";
+            cout << "Would you like to play again? Type y for yes or n for no.\n";
             cin >> playAgain;
             if (playAgain == 'y'){
                 gameOver = false;
@@ -66,7 +62,12 @@ int main()
         {
             do
             {
-                cout << FindPlayerName(playerNames, player1Turn) << ", how many chips would you like?\n";
+                if (player1Turn){
+                    cout << playerNames[0] << ", how many chips would you like?\n";
+                }
+                else{
+                    cout << playerNames[1] << ", how many chips would you like?\n";                
+                }
                 cout << "You can take up to: ";            
                 if (static_cast<int>(MAX_TURN * chipsInPile) == 0){
                     cout << "1 chip\n" ;
@@ -81,7 +82,14 @@ int main()
             cout << "There are " << chipsInPile << " chip(s) left in the pile\n";
             if (chipsInPile == 0){
                 gameOver = true;
-                cout << FindPlayerName(playerNames, player1Turn) << ", congratulations you won\n";
+                if (player1Turn){
+                    cout << playerNames[1] << ", congratulations you won\n";
+                    //return gameOver;
+                }
+                else{
+                    cout <<  playerNames[0] << ", congratulations you won\n";
+                    //return gameOver;
+                }
             }
             else{
                 player1Turn = !player1Turn;
@@ -89,12 +97,6 @@ int main()
         }
 
     }while (gameOver == true);
-    return 0;
-}
 
-string FindPlayerName(string names[], bool playerTurn){
-    if (playerTurn == true)
-        return names[0];
-    else
-        return names[1];
+    return 0;
 }
