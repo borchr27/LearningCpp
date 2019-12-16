@@ -14,12 +14,6 @@ int main()
 {
     ifstream inStream;
     inStream.open("passphrase.txt");
-    ofstream outStream;
-    outStream.open("NewPassPhrase.txt",ios::app);
-    // If you dont have the ios::app at the end then youre data
-    // will be deleted, if you have ios::app there then the data will be added.
-    // Make sure to close streams when done
-
 
     string passPhrase;
     if(!inStream.fail()){
@@ -32,10 +26,9 @@ int main()
             }
             else{
                 cout << "Sorry try again later\n";
-                outStream << passPhrase << endl;
             }    
         }
     }
     inStream.close();
-    outStream.close();
+
 }
