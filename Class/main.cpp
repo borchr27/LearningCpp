@@ -7,20 +7,42 @@
 
 using namespace std;
 
-struct students{
-    string name;
-    float gpa;
+class BankAccount{
+    private:
+        float balance;
+
+    public:
+        BankAccount();
+        void Deposit(float);
+        void WithDrawl();
+        float getBalance();
+
 };
 
+BankAccount::BankAccount(){
+    balance = 0;
+}
+
+float BankAccount::getBalance(){
+    return balance;
+}
+
+void BankAccount::Deposit(float dep){
+    balance = balance + dep;
+}
+
 int main(){
-    students Teacher;
-    Teacher.name = "Dr. Colvin";
-    students firstPeriod[10];
-    firstPeriod[0].name = "Tom";
-    firstPeriod[0].gpa = 3.0;
+    BankAccount checking;
+    BankAccount savings;
 
-    cout << firstPeriod[0].name << " " << firstPeriod[0].gpa << endl;
+    cout << "Your checkings balance is: " << checking.getBalance() << endl;
+    cout << "Your savings balance is: " << savings.getBalance() << endl;
 
+    checking.Deposit(100);
+    savings.Deposit(5000);
+
+    cout << "Your checkings balance is: " << checking.getBalance() << endl;
+    cout << "Your savings balance is: " << savings.getBalance() << endl;
 
 }
 
