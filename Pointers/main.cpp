@@ -1,44 +1,51 @@
-// LINKED LISTS, NODES, AND POINTERS
-
-#include <iostream>
-
-using namespace std;
-
-struct Node{
+#include <iostream> 
+using namespace std; 
+//Struct called node, for linked list
+struct Node
+{
     int data;
     Node *link;
 };
-
+//typedef can be used to rename items,
+//used here to rename a node* to just nodePtr
 typedef Node* nodePtr;
+
+//Function prototype
 void insert(nodePtr& head, int data);
 
-int main(){
-    nodePtr head;
-    head = new Node;
-    head ->data = 20;
-    head ->link = NULL;
 
-    insert(head, 30);
-    nodePtr tmp;
-    tmp = head;
+int main()
+{
+	//create the first node in a list
+   nodePtr head;
+   head = new Node;
+    head->data = 20;
+ 	head->link = NULL;
 
-    while(tmp->link != NULL){
-        cout << tmp->data << endl;
-        tmp = tmp->link;
-    }
-    return 0;
+ 	//Call to insert a new node with 30 as the data point
+ 	insert (head, 30);
+ 	
+	 //Print the list
+	nodePtr tmp;
+ 	tmp = head;
+ 	//while i'm not at the end of the list, print
+ 	while(tmp != NULL)
+	{
+		cout << tmp->data << endl;
+		tmp = tmp->link;
+	}
+  return 0;
+ }
+///////////////////////////////////////////////////
+//Function to create a new node, and add it to the front
+//  of the list
+///////////////////////////////////////////////////
+void insert(nodePtr& head, int data)
+{
+   nodePtr tempPtr;
+   tempPtr = new Node;
+   tempPtr->data = data;
+   tempPtr->link = head;
+   head = tempPtr;
 }
 
-// POINTER EXAMPLE
-/*
-int main(){
-    int v1 = 0;
-    int *p1;
-    p1 = &v1;
-    cout << v1 << " and pointer is " << *p1 << endl;
-    *p1 = 42;
-    cout << v1 << " and pointer is " << *p1 << endl;
-
-}
-
-*/
